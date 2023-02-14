@@ -58,7 +58,7 @@ import { FeedsModule } from './feeds/feeds.module';
         password: configService.get('MYSQL_PASSWORD'),
         database: configService.get('MYSQL_DATABASE'),
         autoLoadEntities: true,
-        synchronize: true,
+        synchronize: false,
       }),
     }),
     AwsSdkModule.forRootAsync({
