@@ -19,7 +19,7 @@ import { AuthService } from 'src/auth/auth.service';
   namespace: 'user',
   transports: ['polling', 'websocket'],
   cors: {
-    origin: 'http://localhost:3000',
+    origin: /^(https:\/\/([^\.]*\.)?socialclub.devwithvishal\.com)$/i,
     credentials: true,
   },
 })
