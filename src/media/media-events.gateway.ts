@@ -20,7 +20,8 @@ import { WsGuard } from 'src/auth/guards/ws-auth.guard';
   namespace: 'media',
   transports: ['polling', 'websocket'],
   cors: {
-    origin: /^(https:\/\/([^\.]*\.)?socialclub.devwithvishal\.com)$/i,
+    origin: 'https://www.socialclub.devwithvishal.com',
+    //origin: /^(https:\/\/([^\.]*\.)?socialclub.devwithvishal\.com)$/i,
     credentials: true,
   },
 })

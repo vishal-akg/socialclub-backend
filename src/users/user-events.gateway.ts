@@ -19,7 +19,8 @@ import { AuthService } from 'src/auth/auth.service';
   namespace: 'user',
   transports: ['polling', 'websocket'],
   cors: {
-    origin: /^(https:\/\/([^\.]*\.)?socialclub.devwithvishal\.com)$/i,
+    origin: 'https://www.socialclub.devwithvishal.com',
+    //origin: /^(https:\/\/([^\.]*\.)?socialclub.devwithvishal\.com)$/i,
     credentials: true,
   },
 })

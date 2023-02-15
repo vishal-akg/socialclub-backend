@@ -7,7 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: {
       credentials: true,
-      origin: /^(https:\/\/([^\.]*\.)?socialclub.devwithvishal\.com)$/i,
+      origin: 'https://www.socialclub.devwithvishal.com',
+      //origin: /^(https:\/\/([^\.]*\.)?socialclub.devwithvishal\.com)$/i,
     },
   });
   app.useWebSocketAdapter(new IoAdapter(app));
