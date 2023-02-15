@@ -38,7 +38,10 @@ export class UserEventsGateway {
     if (!client.handshake.headers.cookie) {
       return client.disconnect();
     }
-    const { Authentication } = cookie.parse(client.handshake.headers?.cookie);
+    const { Authentication } = cookie.parse(client.handshake.headers.cookie);
+    if (!Authentication) {
+      return client.disconnect();
+    }
     const user = await this.authService.verifyToken(Authentication);
 
     if (!user) {
