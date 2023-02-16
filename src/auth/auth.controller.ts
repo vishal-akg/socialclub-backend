@@ -27,6 +27,7 @@ export class AuthController {
     res.cookie('Authentication', access_token, {
       secure: true,
       httpOnly: true,
+      domain: 'socialclub.devwithvishal.com',
       maxAge: 96000000,
     });
     return user;
@@ -44,6 +45,7 @@ export class AuthController {
       secure: true,
       httpOnly: true,
       maxAge: 96000000,
+      domain: 'socialclub.devwithvishal.com',
     });
     return user;
   }
@@ -58,6 +60,7 @@ export class AuthController {
       secure: true,
       httpOnly: true,
       maxAge: 0,
+      domain: 'socialclub.devwithvishal.com',
     });
     return null;
   }
