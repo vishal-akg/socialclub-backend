@@ -24,7 +24,10 @@ export class AuthController {
   @Post('login')
   async login(@Request() req: any, @Res({ passthrough: true }) res: Response) {
     const { user, access_token } = this.authService.login(req.user);
-    res.cookie('Authentication', access_token, { maxAge: 96000000 });
+    res.cookie('Authentication', access_token, {
+      httpOnly: true,
+      maxAge: 96000000,
+    });
     return user;
   }
 
@@ -36,7 +39,10 @@ export class AuthController {
   ) {
     const auth = await this.authService.signup(signupDto);
     const { user, access_token } = this.authService.login(auth.user);
-    res.cookie('Authentication', access_token, { maxAge: 96000000 });
+    res.cookie('Authentication', access_token, {
+      httpOnly: true,
+      maxAge: 96000000,
+    });
     return user;
   }
 
@@ -46,7 +52,7 @@ export class AuthController {
     @Req() req: RequestWithUser,
     @Res({ passthrough: true }) res: Response,
   ) {
-    res.cookie('Authentication', undefined, { maxAge: 0 });
+    res.cookie('Authentication', undefined, { httpOnly: true, maxAge: 0 });
     return null;
   }
 }
