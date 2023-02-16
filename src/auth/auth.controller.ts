@@ -25,6 +25,7 @@ export class AuthController {
   async login(@Request() req: any, @Res({ passthrough: true }) res: Response) {
     const { user, access_token } = this.authService.login(req.user);
     res.cookie('Authentication', access_token, {
+      secure: true,
       httpOnly: true,
       maxAge: 96000000,
     });
@@ -40,6 +41,7 @@ export class AuthController {
     const auth = await this.authService.signup(signupDto);
     const { user, access_token } = this.authService.login(auth.user);
     res.cookie('Authentication', access_token, {
+      secure: true,
       httpOnly: true,
       maxAge: 96000000,
     });
@@ -52,7 +54,11 @@ export class AuthController {
     @Req() req: RequestWithUser,
     @Res({ passthrough: true }) res: Response,
   ) {
-    res.cookie('Authentication', undefined, { httpOnly: true, maxAge: 0 });
+    res.cookie('Authentication', undefined, {
+      secure: true,
+      httpOnly: true,
+      maxAge: 0,
+    });
     return null;
   }
 }
